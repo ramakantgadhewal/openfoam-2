@@ -1,0 +1,104 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2112                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volVectorField;
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform (0 0 0);
+
+boundaryField
+{
+    Bottom
+    {
+        type            empty;
+    }
+    Window_large
+    {
+        //type            noSlip;
+        type            	flowRateInletVelocity;
+        volumetricFlowRate 	uniform 0.004;
+	    rhoInlet        	1.87;
+    }
+    Window_small
+    {
+        //type            noSlip;
+        type            	flowRateInletVelocity;
+        volumetricFlowRate 	uniform 0.004;
+	    rhoInlet        	1.87;
+    }
+    Walls
+    {
+        type            noSlip;
+    }
+    Door
+    {
+        type            zeroGradient;
+    }
+    Head_m
+    {
+        type            noSlip;
+    }
+    Mouth_m
+    {
+        /* type            fixedValue;
+        value           uniform (0 10 0); 
+        type            	flowRateInletVelocity;
+        volumetricFlowRate 	uniform 0.0005;
+	    rhoInlet        	1.87; */
+        type            flowRateInletVelocity;
+        volumetricFlowRate
+        {
+            type            csvFile;
+            nHeaderLine     1;
+            refColumn       0;
+            componentColumns (4);
+            separator       ",";
+            mergeSeparators no;
+            file            "0/male_office_sitting4_scenario_newResults.csv";
+        }
+        rhoInlet        	1.87;
+    }
+    Head_f
+    {
+        type            noSlip;
+    }
+    Mouth_f
+    {
+        /* type            fixedValue;
+        value           uniform (0 10 0); */
+        /* type            	flowRateInletVelocity;
+        volumetricFlowRate 	uniform 0.0005;
+	    rhoInlet        	1.87; */
+        type            flowRateInletVelocity;
+        volumetricFlowRate
+        {
+            type            csvFile;
+            nHeaderLine     1;
+            refColumn       0;
+            componentColumns (4);
+            separator       ",";
+            mergeSeparators no;
+            file            "0/female_office_sitting4_scenario_newResults.csv";
+        }
+        rhoInlet        	1.87;
+    }
+    Top
+    {
+        type            empty;
+    }
+}
+
+
+// ************************************************************************* //

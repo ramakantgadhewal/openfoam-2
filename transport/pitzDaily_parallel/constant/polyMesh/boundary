@@ -1,0 +1,93 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2112                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    arch        "LSB;label=32;scalar=64";
+    class       polyBoundaryMesh;
+    location    "constant/polyMesh";
+    object      boundary;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+10
+(
+    Bottom
+    {
+        type            empty;
+        physicalType    patch;
+        nFaces          73792;
+        startFace       110462;
+    }
+    Window_large
+    {
+        type            patch;
+        physicalType    patch;
+        nFaces          40;
+        startFace       184254;
+    }
+    Window_small
+    {
+        type            patch;
+        physicalType    patch;
+        nFaces          10;
+        startFace       184294;
+    }
+    Walls
+    {
+        type            patch;
+        physicalType    patch;
+        nFaces          285;
+        startFace       184304;
+    }
+    Door
+    {
+        type            patch;
+        physicalType    patch;
+        nFaces          13;
+        startFace       184589;
+    }
+    Head_m
+    {
+        type            patch;
+        physicalType    patch;
+        nFaces          32;
+        startFace       184602;
+    }
+    Mouth_m
+    {
+        type            patch;
+        physicalType    patch;
+        nFaces          20;
+        startFace       184634;
+    }
+    Head_f
+    {
+        type            patch;
+        physicalType    patch;
+        nFaces          32;
+        startFace       184654;
+    }
+    Mouth_f
+    {
+        type            patch;
+        physicalType    patch;
+        nFaces          20;
+        startFace       184686;
+    }
+    Top
+    {
+        type            empty;
+        physicalType    patch;
+        nFaces          73792;
+        startFace       184706;
+    }
+)
+
+// ************************************************************************* //

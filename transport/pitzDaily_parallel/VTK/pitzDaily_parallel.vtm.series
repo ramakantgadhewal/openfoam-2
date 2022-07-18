@@ -1,0 +1,8 @@
+{
+  "file-series-version" : "1.0",
+  "files" : [
+    { "name" : "pitzDaily_parallel_0.vtm", "time" : 0 },
+    { "name" : "pitzDaily_parallel_6000.vtm", "time" : 600 },
+    { "name" : "pitzDaily_parallel_12000.vtm", "time" : 1200 }
+  ]
+}

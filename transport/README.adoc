@@ -1,0 +1,21 @@
+# Transport
+
+* solveur utilisé: `scalarTransportFoam` (Passive scalar transport equation solver) 
+* utilisation du champ de vitesse issue du solveur de CFD
+
+## Paramétrage réalisé
+
+* fichiers `T` et `U` dans le dossier `0`
+* fichier `transportProperties` dans le dossier `constant` -> `DT: 1.6e-05;`
+
+## Etapes réalisées
+
+* Reproduction du cas _pitzDaily_
+* Lancement en parallèle
+* Adaptation au maillage/géométrie du bureau, vérification du maillge faite avec la commande `checkMesh`
+* Conversion des résultats avec la commande `foamToVTK`
+* Export de mesures de différents points défini dans la partie `functions` du fichier `controlDict` 
+
+## Questions
+
+.  Comment réutiliser les champs de vitesse calculés précédemment avec le solveur CFD?

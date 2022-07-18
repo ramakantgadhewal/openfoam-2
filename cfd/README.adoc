@@ -1,0 +1,19 @@
+# CFD
+
+* solveur utilisé: `simpleFoam` (Steady-state solver for incompressible, turbulent flows)
+* utilisation du champ de vitesse obtenu pour le solveur de transport
+
+## Paramétrage à réaliser
+
+* Fichiers `k, nut, omega, p` dans le dossier `0`
+* Utilisation du modèle de turbulence `RASModel: kOmegaSST;` (d'après références sur ce sujet)
+
+## Etapes réalisées
+
+* Reproduction du cas _pitzDaily_
+
+## Questions
+
+. Paramétrage correct des fichiers dans le dossier `0`
+. Erreur `floating point exception`
+. Valeurs obtenues dans dossiers `100, 200, ...` à reprendre pour le transport?

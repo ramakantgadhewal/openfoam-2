@@ -1,0 +1,47 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2112                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+
+singleGraph
+{
+    //start   (0 0 0);
+    //end     (1 1 0);
+    type        sets;
+    interpolationScheme pointMVC;
+    writeControl timeStep;
+    outputInterval 100;
+    
+    //#includeEtc "caseDicts/postProcessing/graphs/sampleDict.cfg"
+
+    setFormat   csv;
+
+    sets 
+    (
+        data 
+        {
+            type cloud;
+            axis xyz;
+            points ((0.45 0.5 0)(1 0.65 0)(1 1.365 0)(1 2.1 0));
+        }
+    );
+
+    fields  (U T);
+
+/*
+    setConfig
+    {
+        type    uniform;
+        axis    xyz;
+    }
+*/
+
+    // Must be last entry
+    //#includeEtc "caseDicts/postProcessing/graphs/graph.cfg"
+}
+
+
+// ************************************************************************* //

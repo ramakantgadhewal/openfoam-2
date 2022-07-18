@@ -1,0 +1,88 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2112                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      T;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 0 0 0 0 0 0];
+
+internalField   uniform 0;
+
+boundaryField
+{
+    Bottom
+    {
+        type            empty;
+    }
+    Window_large
+    {
+        type            zeroGradient;
+    }
+    Window_small
+    {
+        type            zeroGradient;
+    }
+    Walls
+    {
+        type            zeroGradient;
+    }
+    Door
+    {
+        type            zeroGradient;
+    }
+    Head_m
+    {
+        type            zeroGradient;
+    }
+    Mouth_m
+    {
+        /* type            fixedValue;
+        value           uniform 2.25e-07; */
+        type            uniformFixedValue;
+        uniformValue
+        {
+            type            csvFile;
+            nHeaderLine     1;
+            refColumn       0;
+            componentColumns (5);
+            separator       ",";
+            mergeSeparators no;
+            file            "0/male_office_sitting4_scenario_newResults.csv";
+        } 
+    }
+    Head_f
+    {
+        type            zeroGradient;
+    }
+    Mouth_f
+    {
+        type            uniformFixedValue;
+        uniformValue
+        {
+            type            csvFile;
+            nHeaderLine     1;
+            refColumn       0;
+            componentColumns (5);
+            separator       ",";
+            mergeSeparators no;
+            file            "0/female_office_sitting4_scenario_newResults.csv";
+        } 
+    }
+    Top
+    {
+        type            empty;
+    }
+}
+
+
+// ************************************************************************* //

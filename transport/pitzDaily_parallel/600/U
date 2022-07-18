@@ -1,0 +1,94 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2112                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    arch        "LSB;label=32;scalar=64";
+    class       volVectorField;
+    location    "600";
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform (0 0 0);
+
+boundaryField
+{
+    Bottom
+    {
+        type            empty;
+    }
+    Window_large
+    {
+        type            flowRateInletVelocity;
+        volumetricFlowRate uniform 0.0032;
+        value           uniform (0.0016 -0 -0);
+    }
+    Window_small
+    {
+        type            flowRateInletVelocity;
+        volumetricFlowRate uniform 0.0008;
+        value           uniform (0.0016 -0 -0);
+    }
+    Walls
+    {
+        type            noSlip;
+    }
+    Door
+    {
+        type            zeroGradient;
+    }
+    Head_m
+    {
+        type            noSlip;
+    }
+    Mouth_m
+    {
+        type            flowRateInletVelocity;
+        volumetricFlowRate csvFile;
+        volumetricFlowRateCoeffs
+        {
+            nHeaderLine     1;
+            refColumn       0;
+            componentColumns 1(1);
+            separator       ",";
+            mergeSeparators 0;
+            file            "0/inlet.csv";
+        }
+        value           uniform (0 0.0197495 0);
+    }
+    Head_f
+    {
+        type            noSlip;
+    }
+    Mouth_f
+    {
+        type            flowRateInletVelocity;
+        volumetricFlowRate csvFile;
+        volumetricFlowRateCoeffs
+        {
+            nHeaderLine     1;
+            refColumn       0;
+            componentColumns 1(2);
+            separator       ",";
+            mergeSeparators 0;
+            file            "0/inlet.csv";
+        }
+        value           uniform (0 -0.0173105 0);
+    }
+    Top
+    {
+        type            empty;
+    }
+}
+
+
+// ************************************************************************* //
